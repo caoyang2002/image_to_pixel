@@ -14,7 +14,7 @@
 > 原作者: [@nuno-faria/tiler](https://github.com/nuno-faria/tiler)
 > 
 > 更改说明:
-> 1. 没有改原作者的图片和英文注释, 仅仅是添加 (好像原作者没有继续维护了)
+> 暂无
 
 
 # 使用
