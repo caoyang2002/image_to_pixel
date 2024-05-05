@@ -70,55 +70,55 @@ All configurations can be changed in the `conf.py` file.
 
 #### Various sizes
 
-<img src="images/cake_circles.png" width="40%">
+<img src="Docs/images/cake_circles.png" width="40%">
 
 [Original](https://www.flaticon.com/free-icon/cake_1102780) cake image by [pongsakornred](https://www.flaticon.com/authors/pongsakornred) from [FLATICON](https://www.flaticon.com).
 
 #### Fixed
 
 - 10x10
-<img src="images/cake_circles_simple.png" width="40%">
-<img src="images/starry_night_circles_10x10.png" width="100%">
+<img src="Docs/images/cake_circles_simple.png" width="40%">
+<img src="Docs/images/starry_night_circles_10x10.png" width="100%">
 - 25x25
-<img src="images/starry_night_circles_25x25.png" width="100%">
+<img src="Docs/images/starry_night_circles_25x25.png" width="100%">
 - 50x50
-<img src="images/starry_night_circles_50x50.png" width="100%">
+<img src="Docs/images/starry_night_circles_50x50.png" width="100%">
 
 
 ### Paper clips
 
-<img src="images/cake_clips.png" width="40%">
+<img src="Docs/images/cake_clips.png" width="40%">
 
 
 ### Cross stitch (times)
 
-<img src="images/cake_times.png" width="40%">
+<img src="Docs/images/cake_times.png" width="40%">
 
-<img src="images/starry_night_times.png" width="100%">
+<img src="Docs/images/starry_night_times.png" width="100%">
 
 
 ### Hearts
 
-<img src="images/heart_hearts.png" width="40%">
+<img src="Docs/images/heart_hearts.png" width="40%">
 
 
 ### Legos
 
-<img src="images/cake_lego.png" width="40%">
-<img src="images/starry_night_lego.png" width="100%">
+<img src="Docs/images/cake_lego.png" width="40%">
+<img src="Docs/images/starry_night_lego.png" width="100%">
 
 
 ### Minecraft blocks
 
-<img src="images/cake_minecraft.png" width="40%">
-<img src="images/starry_night_minecraft.png" width="100%">
+<img src="Docs/images/cake_minecraft.png" width="40%">
+<img src="Docs/images/starry_night_minecraft.png" width="100%">
 
 
 ### Stripes (lines)
 
-<img src="images/cake_stripes.png" width="50%">
+<img src="Docs/images/cake_stripes.png" width="50%">
 
 
 ### At
 
-<img src="images/github_logo_at.png" width="50%">
+<img src="Docs/images/github_logo_at.png" width="50%">

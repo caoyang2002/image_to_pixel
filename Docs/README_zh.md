@@ -1,13 +1,17 @@
 # Image to Pixel
 
+[English](/README.md) · **简体中文** 
+
 ![Cover_image](images/title_stripes.png)
 
 👷 使用像素块构建像素图。
 
-[English](/README.md) · **简体中文** 
-
 >[!NOTE]
 > 我使用了 [@alexdelorenzo/tiler](https://github.com/alexdelorenzo/tiler) 的代码, 但是不清楚如何 @ 他的库
+> 原作者: [@nuno-faria/tiler](https://github.com/nuno-faria/tiler)
+> 
+> 更改说明:
+> 1. 没有改原作者的图片和英文注释, 仅仅是添加 (好像原作者没有继续维护了)
 
 
 # 使用
@@ -62,6 +66,8 @@ Tiler 是一个使用各种小图像（像素块）来创建像素图的工具�
 
 
 # 开发
+- [iamge_in](/image_in) 测试输入文件
+- [tiles](/tiles) 像素块文件
 
 ## 参考
 https://github.com/alexdelorenzo/tiler
