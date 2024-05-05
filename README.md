@@ -1,5 +1,5 @@
 # Language
-[中文](Docs/README_zh.md) 
+[更适合中国宝宝体质的版本](Docs/README_zh.md) 
 
 ![title](images/title_stripes.png)
 
