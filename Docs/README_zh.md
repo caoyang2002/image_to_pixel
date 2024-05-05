@@ -1,3 +1,7 @@
+# Image to Pixel
+
+[English](/README.md) · **简体中文** 
+
 # 说明
 >[!NOTE]
 > 我使用了 [alexdelorenzo/tiler](https://github.com/alexdelorenzo/tiler) 的代码, 但是不清楚如何@他的库
