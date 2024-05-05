@@ -2,7 +2,7 @@
 
 **English** · [简体中文](Docs/README_zh.md) 
 
-![Cover_image](images/title_stripes.png)
+![Cover_image](Docs/images/title_stripes.png)
 
 👷 Build images with images.
 
