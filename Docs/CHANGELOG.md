@@ -4,15 +4,20 @@
 
 ## Version 0.0.1
 
-### None
+### Fix Error
 
+```bash
 
+```
 
 <br/>
 
 <details>
 <summary><kbd>Improvements and Fixes</kbd></summary>
-None
+
+```py
+
+```
 
 </details>
 

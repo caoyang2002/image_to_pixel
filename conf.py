@@ -3,8 +3,10 @@
 
 # number of divisions per channel (R, G and B)
 # DEPTH = 4 -> 4 * 4 * 4 = 64 colors
+# 每个颜色通道（红、绿、蓝）的划分数
 DEPTH = 4
 # list of rotations, in degrees, to apply over the original image
+# 应用于原始图像的旋转列表，单位为度
 ROTATIONS = [0]
 
 

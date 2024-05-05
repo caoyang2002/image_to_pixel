@@ -27,6 +27,8 @@ POOL_SIZE = conf.POOL_SIZE
 # 像素块是否可以重叠
 OVERLAP_TILES = conf.OVERLAP_TILES
 
+IMAGE_SCALE = conf.IMAGE_SCALE
+
 
 # reduces the number of colors in an image
 def color_quantization(img, n_colors):
@@ -35,11 +37,21 @@ def color_quantization(img, n_colors):
 
 # returns an image given its path
 # 根据给定的路径返回图像
-def read_image(path):
-    # 使用cv2.imread函数读取图像，不进行任何颜色转换
+def read_image(path, mainImage=False):
+    # 使用cv2.imread函数从指定路径读取图像，不进行任何颜色转换
     img = cv2.imread(path, cv2.IMREAD_UNCHANGED)
-    # 将图像数据类型转换为浮点数，进行颜色量化处理，然后转换回uint8类型
+    # 检查读取的图像是否只有三个通道（RBG格式）
+    if img.shape[2] == 3:
+        # 如果是，使用cv2.cvtColor将图像从BGR格式转换为BGRA格式（添加Alpha通道）
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2BGRA)
+    # 将图像数据类型转换为浮点数，进行颜色量化处理
     img = color_quantization(img.astype('float'), COLOR_DEPTH)
+    # scale the image according to IMAGE_SCALE, if this is the main image
+    # 如果指定了mainImage为True，表明这是一个主要的图像
+    if mainImage:
+        # 使用cv2.resize函数根据IMAGE_SCALE参数缩放图像
+        img = cv2.resize(img, (0, 0), fx=IMAGE_SCALE, fy=IMAGE_SCALE)
+    # 将处理后的图像数据类型转换为uint8（OpenCV中表示图像的常用数据类型），并返回
     return img.astype('uint8')
 
 
@@ -53,7 +65,7 @@ def resize_image(img, ratio):
 
 # the most frequent color in an image and its relative frequency
 # 计算图像中最频繁出现的颜色及其相对频率
-def mode_color(img):
+def mode_color(img, ignore_alpha=False):
     # 使用defaultdict来计数每种颜色的出现次数
     counter = defaultdict(int)
     # 记录图像中非透明像素的总数
@@ -63,7 +75,7 @@ def mode_color(img):
         # 遍历行中的每个像素
         for x in y:
             # 如果像素的alpha通道不为0，或者图像没有alpha通道（即长度小于4）
-            if len(x) < 4 or x[3] != 0:
+            if len(x) < 4 or ignore_alpha or x[3] != 0:
                 # (x:[:3]) 表示将 RG B值作为键，并增加计数
                 counter[tuple(x[:3])] += 1
             else:
@@ -120,9 +132,9 @@ def load_tiles(paths):
                 # 读取每个像素块图像
                 tile = read_image(os.path.join(path, tile_name))
                 # 获取像素块的主要颜色和相对频率
-                mode, rel_freq = mode_color(tile)
+                mode, rel_freq = mode_color(tile, ignore_alpha=True)
                 # 如果获取到的主要颜色不是None
-                if mode != None:
+                if mode is not None:
                     # 遍历所有的缩放比例
                     for scale in RESIZING_SCALES:
                         # 根据比例缩放像素块
@@ -209,7 +221,7 @@ def most_similar_tile(box_mode_freq, tiles):
             # 计算一个距离, 标识像素块与方块颜色的相似度
             dist = (1 + color_distance(box_mode_freq[0], t['mode'])) / box_mode_freq[1]
             # 如果当前距离更小
-            if min_distance == None or dist < min_distance:
+            if min_distance is None or dist < min_distance:
                 # 更新最小距离
                 min_distance = dist
                 # 更新最相似的像素块图像
@@ -224,7 +236,7 @@ def get_processed_image_boxes(image_path, tiles):
     # 打印提示信息
     print('Getting and processing boxes')
     # 读取图像
-    img = read_image(image_path)
+    img = read_image(image_path, mainImage=True)
     # 创建多进程池
     pool = Pool(POOL_SIZE)
     # 初始化所有盒子的列表
@@ -262,10 +274,10 @@ def place_tile(img, box):
     p1 = np.flip(box['pos'])
     # 获取方块的结束位置（起始位置+方块图像的尺寸）
     p2 = p1 + box['img'].shape[:2]
-    # 创建一个布尔掩码，其中alpha通道非零的地方为 True
-    mask = box['tile'][:, :, 3] != 0
     # 获取当前盒子在原图中的位置对应的图像区域
     img_box = img[p1[0]:p2[0], p1[1]:p2[1]]
+    # 创建一个布尔掩码，其中alpha通道非零的地方为 True
+    mask = box['tile'][:, :, 3] != 0
     # 将掩码大小调整为与图像区域匹配
     mask = mask[:img_box.shape[0], :img_box.shape[1]]
     # 如果允许瓦片重叠，或者该区域没有其他瓦片
@@ -284,25 +296,6 @@ def create_tiled_image(boxes, res, render=False):
 
     # 遍历方块列表，方块根据最小距离排序，如果允许像素块重叠，则逆序排列
     for box in tqdm(sorted(boxes, key=lambda x: x['min_dist'], reverse=OVERLAP_TILES)): # 根据每个方块字典中的 'min_dist' 键的值来排序
-        # 确保box['tile']是RGBA格式
-        if box['tile'].ndim == 2:
-            # 将RGB二维数组转换为RGBA，alpha通道全为255
-            box['tile'] = np.dstack(
-                (box['tile'], np.ones((box['tile'].shape[0], box['tile'].shape[1]), dtype=np.uint8) * 255))
-        elif box['tile'].ndim == 3:
-            if box['tile'].shape[2] == 3:
-                # 将RGB转换为RGBA，alpha通道全为255
-                box['tile'] = np.concatenate(
-                    (box['tile'], np.ones((box['tile'].shape[0], box['tile'].shape[1], 1), dtype=np.uint8) * 255),
-                    axis=2)
-            elif box['tile'].shape[2] != 4:
-                print("Error: A tile does not have the correct dimensions for an alpha channel.")
-                sys.exit(1)
-
-        # 现在box['tile']确保是RGBA格式，可以安全地创建mask
-        # mask = box['tile'][:, :, 3] != 0
-
-
         # 将当前方块的像素块放置到图像中
         place_tile(img, box)
         # 如果设置为渲染模式
@@ -310,7 +303,7 @@ def create_tiled_image(boxes, res, render=False):
             # 显示当前的平铺图像
             show_image(img, wait=False)
             # 暂停0.025秒，以便观察
-            sleep(0.001)
+            sleep(0.025)
     # 返回最终的平铺图像
     return img
 
