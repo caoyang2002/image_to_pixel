@@ -1,4 +1,5 @@
 # GEN TILES CONFS
+# 生成马赛克图片的配置
 
 # number of divisions per channel (R, G and B)
 # DEPTH = 4 -> 4 * 4 * 4 = 64 colors
