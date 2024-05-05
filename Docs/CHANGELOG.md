@@ -6,18 +6,21 @@
 
 ### 💄 Styles
 
-- **Fix:** There are gaps when filling with color pixels.
+- **Fix:** There are gaps when filling with pixels.
 
 <br/>
 
 <details>
 <summary><kbd>Improvements and Fixes</kbd></summary>
 
+### Pre-bug fix image generation
+
+![old_image](images/pre-bug_fix/filling_with_color_pixels.png)
+
 ### Styles
 
 ```python
-test
-test
+ff
 ```
 
 </details>

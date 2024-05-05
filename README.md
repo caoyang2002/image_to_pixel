@@ -6,13 +6,12 @@
 
 👷 Build images with images.
 
+[change log](Docs/CHANGELOG.md)
+
 >[!NOTE]
 > I used the code from [alexdelorenzo/tiler](https://github.com/alexdelorenzo/tiler), but I'm not sure how to reference his library.
 
 # As User
-
-
-
 
 ## About
 

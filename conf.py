@@ -31,7 +31,7 @@ RENDER = False
 POOL_SIZE = 8
 
 # out file name
-OUT = 'old.png'
+OUT = 'out.png'
 # image to tile (ignored if passed as the 1st arg)
 IMAGE_TO_TILE = None
 # folder with tiles (ignored if passed as the 2nd arg)

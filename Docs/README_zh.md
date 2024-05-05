@@ -6,6 +6,9 @@
 
 👷 使用像素块构建像素图。
 
+[更改日志](Docs/CHANGELOG.md)
+
+
 >[!NOTE]
 > 我使用了 [@alexdelorenzo/tiler](https://github.com/alexdelorenzo/tiler) 的代码, 但是不清楚如何 @ 他的库
 > 原作者: [@nuno-faria/tiler](https://github.com/nuno-faria/tiler)
