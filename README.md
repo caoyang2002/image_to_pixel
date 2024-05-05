@@ -1,4 +1,4 @@
-# Language
+# as User
 [更适合中国宝宝体质的版本](Docs/README_zh.md) 
 
 ![title](images/title_stripes.png)
@@ -49,6 +49,11 @@ All configurations can be changed in the `conf.py` file.
 - `IMAGE_TO_TILE` - image to tile (ignored if passed as the 1st arg);
 - `TILES_FOLDER` - folder with tiles (ignored if passed as the 2nd arg);
 - `OUT` - result image filename.
+
+
+# as developer
+
+
 
 
 ## Examples
