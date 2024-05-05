@@ -1,14 +1,17 @@
 # Image to Pixel
+
 **English** · [简体中文](Docs/README_zh.md) 
 
+![Cover_image](images/title_stripes.png)
+
+👷 Build images with images.
+
+>[!NOTE]
+> I used the code from [alexdelorenzo/tiler](https://github.com/alexdelorenzo/tiler), but I'm not sure how to reference his library.
 
 # As User
 
 
-
-![title](images/title_stripes.png)
-
-👷 Build images with images.
 
 
 ## About

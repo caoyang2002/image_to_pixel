@@ -1,16 +1,16 @@
 # Image to Pixel
 
+![Cover_image](images/title_stripes.png)
+
+👷 使用像素块构建像素图。
+
 [English](/README.md) · **简体中文** 
 
-# 说明
 >[!NOTE]
-> 我使用了 [alexdelorenzo/tiler](https://github.com/alexdelorenzo/tiler) 的代码, 但是不清楚如何@他的库
+> 我使用了 [@alexdelorenzo/tiler](https://github.com/alexdelorenzo/tiler) 的代码, 但是不清楚如何 @ 他的库
 
 
 # 使用
-
-
-👷 使用像素块构建像素图。
 
 ## 一、介绍
 
