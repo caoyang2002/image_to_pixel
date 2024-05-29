@@ -47,7 +47,7 @@ def read_image(path, mainImage=False):
     # 将图像数据类型转换为浮点数，进行颜色量化处理
     img = color_quantization(img.astype('float'), COLOR_DEPTH)
     # scale the image according to IMAGE_SCALE, if this is the main image
-    # 如果指定了mainImage为True，表明这是一个主要的图像
+    # 如果 mainImage 为 True，则根据 IMAGE_SCALE 缩放图像。
     if mainImage:
         # 使用cv2.resize函数根据IMAGE_SCALE参数缩放图像
         img = cv2.resize(img, (0, 0), fx=IMAGE_SCALE, fy=IMAGE_SCALE)

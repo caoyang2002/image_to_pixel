@@ -18,7 +18,7 @@ ROTATIONS = [0]
 # number of divisions per channel
 # (COLOR_DEPTH = 32 -> 32 * 32 * 32 = 32768 colors)
 # 每个颜色通道的划分数 32
-COLOR_DEPTH = 32  # 32
+COLOR_DEPTH = 8  # 32
 # Scale of the image to be tiled (1 = default resolution)
 # 要平铺的图像的缩放比例（1 = 默认分辨率）
 IMAGE_SCALE = 1
@@ -44,7 +44,7 @@ RENDER = False
 POOL_SIZE = 8
 
 # out file name
-OUT = './pix_out_out.png'
+OUT = './pix_out/out.png'
 # image to tile (ignored if passed as the 1st arg)
 # IMAGE_TO_TILE = None
 IMAGE_TO_TILE = r"image_in/bird_x.png"

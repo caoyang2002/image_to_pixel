@@ -31,8 +31,14 @@ Tiler 是一个使用各种小图像（像素块）来创建像素图的工具�
 - 安装 Python 3；
 - 安装 pip（可选，用于安装依赖项）；
 - 安装依赖项：`pip install -r requirements.txt`
+```bash
+pip install tkinterdnd2
+pip install Pillow
+```
 
 ## 三、使用方法
+
+
 
 - 创建一个包含用于构建图像的像素块的文件夹（仅包含像素块）：
   1. 使用脚本构建: `python ./gen_tiles.py your/image/path`, 例如: `python ./gen_tiles.py ./tiles/block/block.png`
