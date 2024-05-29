@@ -40,6 +40,17 @@ def color_quantization(img, n_colors):
 def read_image(path, mainImage=False):
     # 使用cv2.imread函数从指定路径读取图像，不进行任何颜色转换
     img = cv2.imread(path, cv2.IMREAD_UNCHANGED)
+    # 检查图像是否正确加载
+    if img is not None and isinstance(img, np.ndarray):
+        # 检查图像是否至少有 2 个维度
+        if img.ndim >= 2:
+            # 访问第三个维度的大小
+            channels = img.shape[2]
+            print(f"图像的通道数: {channels}")
+        else:
+            print("图像没有足够的维度。")
+    else:
+        print("图像未正确加载或不是有效的 NumPy 数组。")
     # 检查读取的图像是否只有三个通道（RBG格式）
     if img.shape[2] == 3:
         # 如果是，使用cv2.cvtColor将图像从BGR格式转换为BGRA格式（添加Alpha通道）
@@ -297,13 +308,18 @@ def create_tiled_image(boxes, res, render=False):
     # 遍历方块列表，方块根据最小距离排序，如果允许像素块重叠，则逆序排列
     for box in tqdm(sorted(boxes, key=lambda x: x['min_dist'], reverse=OVERLAP_TILES)): # 根据每个方块字典中的 'min_dist' 键的值来排序
         # 将当前方块的像素块放置到图像中
-        place_tile(img, box)
-        # 如果设置为渲染模式
-        if render:
-            # 显示当前的平铺图像
-            show_image(img, wait=False)
-            # 暂停0.025秒，以便观察
-            sleep(0.025)
+        try:
+            if img.shape[2] == 3:
+                # 处理RGB图像
+                place_tile(img, box)
+                # 如果设置为渲染模式
+                if render:
+                    # 显示当前的平铺图像
+                    show_image(img, wait=False)
+                    # 暂停0.025秒，以便观察
+                    sleep(0.025)
+        except AttributeError:
+            print("读取图像失败，img变量可能未正确初始化或图像文件无效。")
     # 返回最终的平铺图像
     return img
 

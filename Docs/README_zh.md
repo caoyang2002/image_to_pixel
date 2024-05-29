@@ -79,6 +79,14 @@ pip install Pillow
 - [image_in](/image_in) 测试输入文件
 - [tiles](/tiles) 像素块文件
 
+# 打包:
+
+```bash
+pyinstaller ./app.spec           
+```
+
+>[!NOTE]
+>  datas=[('tkinterdnd2', '.'),('tkinterdnd2/tkdnd','.')],
 
 
 ## 参考

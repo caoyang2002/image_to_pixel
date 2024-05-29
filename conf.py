@@ -44,10 +44,10 @@ RENDER = False
 POOL_SIZE = 8
 
 # out file name
-OUT = './pix_out_out.png'
+OUT = r'./pix_out/out.png'
 # image to tile (ignored if passed as the 1st arg)
 # IMAGE_TO_TILE = None
-IMAGE_TO_TILE = r"image_in/bird_x.png"
+IMAGE_TO_TILE = r"image_in/bird.png"
 # IMAGE_TO_TILE = r"image_in/bird_x.png"
 # folder with tiles (ignored if passed as the 2nd arg)
 # TILES_FOLDER = None
